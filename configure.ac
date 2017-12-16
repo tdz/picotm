@@ -172,6 +172,14 @@ AM_CONDITIONAL([HAVE_FIND], [test x$FIND != x])
 AC_PATH_PROG([OPTIPNG], [optipng])
 AM_CONDITIONAL([HAVE_OPTIPNG], [test x$OPTIPNG != x])
 
+dnl
+dnl SPDX and REUSE tools for licensing
+dnl
+
+dnl See https://reuse.software/dev/
+AC_PATH_PROG([REUSE], [reuse])
+AM_CONDITIONAL([HAVE_REUSE], [test x$REUSE != x])
+
 
 dnl
 dnl Output

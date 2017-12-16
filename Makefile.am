@@ -44,4 +44,24 @@ SUBDIRS = include \
 
 ACLOCAL_AMFLAGS = -I m4
 
-EXTRA_DIST = LICENSE
+EXTRA_DIST = LICENSE \
+             LICENSE.spdx
+
+REUSE_FLAGS ?=
+REUSE_COMPILE_FLAGS ?=
+
+#
+# Internal rules
+#
+
+.PHONY: .FORCE
+
+LICENSE.spdx: .FORCE
+if HAVE_REUSE
+	cd $(abs_srcdir) && \
+	    $(REUSE) $(REUSE_FLAGS) compile $(REUSE_COMPILE_FLAGS) \
+	        -o $(abs_builddir)/$@ && \
+	    cd $(abs_builddir)
+endif
+
+.FORCE:
